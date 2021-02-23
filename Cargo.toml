@@ -1,0 +1,14 @@
+[package]
+name = "monolog"
+version = "0.1.0"
+repository = "https://github.com/tbaccaer/monolog"
+authors = ["Tim Baccaert <tbaccaer@vub.be>"]
+license = "EUPL-1.2"
+description = "High availability Linked Data query engine and triple store (alpha-stage)."
+keywords = ["linked data", "rdf", "datalog", "query language"]
+categories = ["database-implementations", "web-programming"]
+edition = "2018"
+
+[dependencies]
+sled = "0.34.6"
+rio_turtle = "0.5.2"
