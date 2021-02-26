@@ -1,0 +1,34 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix metro: <http://metro-example.brussels/ontology/1.0/> .
+@prefix mdata: <http://metro-example.brussels/data/1.0/> .
+
+mdata:kunstwet a metro:Station ;
+    metro:atLon "50.8455404" ;
+    metro:atLat "4.366345" ;
+    metro:adjacentTo mdata:maelbeek ;
+    rdfs:label "Kunst-Wet"@nl ;
+    rdfs:label "Arts-Loi"@fr .
+
+mdata:maelbeek a metro:Station ;
+    metro:atLon "50.8436871" ;
+    metro:atLat "4.3753953" ;
+    metro:adjacentTo mdata:schuman .
+
+mdata:schuman a metro:Station ;
+    metro:atLon "50.8423542" ;
+    metro:atLat "4.3807684" ;
+    metro:adjacentTo mdata:merode .
+
+mdata:merode a metro:Station ;
+    metro:atLon "50.8392999" ;
+    metro:atLat "4.3966235" ;
+    metro:adjacentTo mdata:thieffry .
+
+mdata:thieffry a metro:Station ;
+    metro:atLon "50.8329119" ;
+    metro:atLat "4.3997069" ;
+    metro:adjacentTo mdata:petillon .
+
+mdata:petillon a metro:Station ;
+    metro:atLon "50.8277694" ;
+    metro:atLat "4.4016923" .

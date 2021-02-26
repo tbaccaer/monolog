@@ -11,4 +11,7 @@ edition = "2018"
 
 [dependencies]
 sled = "0.34.6"
+rio_api = "0.5.2"
 rio_turtle = "0.5.2"
+oxiri = "0.1.1"
+oxilangtag = "0.1.1"
