@@ -1,10 +1,10 @@
-use crate::mem::rdf::{Graph, Id, Iri, LangTag, Literal, Pair, Term};
+use crate::graph::{AtomSet, Graph, Pair};
+use crate::rdf::{Id, Iri, LangTag, Literal, Term};
 use rio_api::model::Literal::{LanguageTaggedString as LTString, Simple, Typed};
 use rio_api::model::NamedOrBlankNode::{BlankNode, NamedNode};
 use rio_api::model::Term::{BlankNode as Blank, Literal as Lit, NamedNode as Named};
 use rio_api::parser::TriplesParser;
 use rio_turtle::{TurtleError, TurtleParser};
-use std::collections::BTreeSet;
 use std::fs::File;
 use std::io::BufReader;
 
@@ -46,7 +46,7 @@ pub fn parse_file(file: File) -> Graph {
                 Named(named) => Term::Id(Id::Named(Iri::parse(named.iri.to_string()).unwrap())),
                 Blank(blank) => Term::Id(Id::Blank(blank.id.to_string())),
                 Lit(literal) => match literal {
-                    Simple { value } => Term::Literal(Literal::new_untyped(value.to_string())),
+                    Simple { value } => Term::Literal(Literal::new(value.to_string())),
                     Typed { value, datatype } => {
                         let iri = Iri::parse(datatype.iri.to_string()).unwrap();
                         Term::Literal(Literal::new_typed(value.to_string(), iri))
@@ -64,9 +64,9 @@ pub fn parse_file(file: File) -> Graph {
                     set.insert(pair);
                 }
                 None => {
-                    let mut set = BTreeSet::new();
-                    set.insert(pair);
-                    graph.insert(predicate, set);
+                    let mut atom_set = AtomSet::new();
+                    atom_set.insert(pair);
+                    graph.insert(predicate, atom_set);
                 }
             };
 

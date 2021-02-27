@@ -1,7 +1,8 @@
-mod io;
-mod mem;
+mod engine;
+mod graph;
+mod parser;
+mod rdf;
 
-use io::parser;
 use std::fs::File;
 
 fn main() {
